@@ -41,7 +41,7 @@ func ExportTableAsJSON(projectId, bucketName, prefix string, targetDate time.Tim
 
 	job, err := extractor.Run(ctx)
 	if err != nil {
-		return err
+		panic(fmt.Sprintf("Cannot extract Bigquery table due to %v", err))
 	}
 	status, err := job.Wait(ctx)
 	if err != nil {
